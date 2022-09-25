@@ -99,5 +99,26 @@ class DatabaseSeeder extends Seeder
                 ],
             ],
         ]);
+
+        $user1->dashboards()->create([
+            'name' => 'Dashboard 2',
+            'settings' => [
+                'grid' => [10, 6],
+            ],
+            'widgets' => [
+                [
+                    'class' => Clock::class,
+                    'position' => [10, 6],
+                    'size' => [1, 1],
+                    'active' => true,
+                    'config' => [
+                        'direction' => 'h',
+                        'timezones' => [
+                            'America/Sao_Paulo' => 'Brazil',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 }

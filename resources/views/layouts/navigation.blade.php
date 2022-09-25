@@ -38,6 +38,12 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
+                            @foreach(auth()->user()->activeDashboards as $dashboard)
+                                <x-dropdown-link :href="route('dashboard.switch', $dashboard->getKey())">
+                                    {{ $dashboard->name }}
+                                </x-dropdown-link>
+                            @endforeach
+
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">

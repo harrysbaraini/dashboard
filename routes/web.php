@@ -15,10 +15,12 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::redirect('/', RouteServiceProvider::HOME);
-
-Route::get('/dashboard', [DashboardController::class, 'show'])
+Route::get('/', [DashboardController::class, 'show'])
     ->middleware(['auth'])
     ->name('dashboard');
+
+Route::get('/switch/{dashboardId}', [DashboardController::class, 'switch'])
+    ->middleware(['auth'])
+    ->name('dashboard.switch');
 
 require __DIR__.'/auth.php';
